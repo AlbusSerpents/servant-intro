@@ -3,13 +3,17 @@
 module Services.Users 
     ( users
     , getUser
+    , createUser
     , User
+    , UserCreated
     ) where
 
-import           Data.Aeson
 import           Data.Time.Calendar
-import           GHC.Generics
 import           Data.Maybe
+import           GHC.Generics
+
+data UserCreated = Created 
+    { id :: Int } deriving (Eq, Show, Generic)
 
 data User = User
     { name :: String
@@ -17,8 +21,6 @@ data User = User
     , email :: String
     , registration_date :: Day
     } deriving (Eq, Show, Generic)
-      
-instance ToJSON User
 
 users :: [User]
 users =
@@ -28,3 +30,6 @@ users =
 
 getUser :: String -> Maybe User
 getUser search = listToMaybe $ filter (\u -> (name u) == search) users
+
+createUser :: User -> UserCreated
+createUser (User name age email registrationDate) = Created $ age * (length name)
