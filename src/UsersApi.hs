@@ -28,7 +28,7 @@ data User = User
   , age :: Int
   , email :: String
   , registration_date :: Day
-  } | NoUser deriving (Eq, Show, Generic)
+  } deriving (Eq, Show, Generic)
 
 instance ToJSON User
 
@@ -43,8 +43,8 @@ users =
     , User "Albert Einstein" 136 "ae@mc2.org"         (fromGregorian 1905 12 1)
     ]
 
-getUser :: String -> User
-getUser search = fromMaybe NoUser $ listToMaybe $ filter (\u -> (name u) == search) users
+getUser :: String -> Maybe User
+getUser search = listToMaybe $ filter (\u -> (name u) == search) users
 
 usersApi :: Server UsersApi
 usersApi = listHandler :<|> detailsHandler
@@ -53,7 +53,10 @@ usersApi = listHandler :<|> detailsHandler
         listHandler = return users
         
         detailsHandler :: String -> Handler User
-        detailsHandler = return . getUser
+        detailsHandler name = (return $ getUser name) >>= (maybe notFound return)
+
+        notFound :: Handler User
+        notFound = throwError err404 { errBody = "No user with that name." }
     
 userAPI :: Proxy UsersApi
 userAPI = Proxy
