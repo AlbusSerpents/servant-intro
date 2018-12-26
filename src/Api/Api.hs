@@ -7,12 +7,14 @@ module Api.Api
 import           Api.UsersApi
 import           Api.StaticApi
 import           Api.UsersStreamingApi
+import           Client.MockServer
+import           Client.ClientApi
 import           Servant
 
-type Api = UsersApi :<|> StaticApi :<|> UsersStreamingApi
+type Api = UsersApi :<|> StaticApi :<|> UsersStreamingApi :<|> ClientApi
 
 api :: Server Api
-api = usersApi :<|> staticApi :<|> streamingApi
+api = usersApi :<|> staticApi :<|> streamingApi :<|> clientApi
 
 apiProxy :: Proxy Api
 apiProxy = Proxy
