@@ -18,7 +18,7 @@ positionHandler :: Int -> Int -> Handler Position
 positionHandler x y = return $ Position x y
 
 helloHandler :: Maybe String -> HelloMessage
-helloHandler =  HelloMessage . ("Hello" ++) . maybe "Anonymus" id
+helloHandler =  HelloMessage . ("Hello " ++) . maybe "Anonymus" id
 
 marketingHandler :: ClientInfo -> Email
 marketingHandler (ClientInfo name email age interests) = Email marketingEmail email subject body

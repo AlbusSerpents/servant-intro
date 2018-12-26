@@ -2,7 +2,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Client.UsersClient 
+module Client.MockClient
     ( makePosition
     , sayHi
     , generateEmail
@@ -10,13 +10,9 @@ module Client.UsersClient
 
 import           Data.Aeson
 import           Data.Proxy
-import           GHC.Generics
-import           Network.HTTP.Client (newManager, defaultManagerSettings)
 import           Servant.API
 import           Servant.Client
-import           Servant.Types.SourceT (foreach)
 import           Client.ClientApi
-import           Data.Either
 import           Client.Base
 import           Control.Monad
 
@@ -58,4 +54,4 @@ presentEmail (Email from to subject body) = do
     putStrLn $ "To: " ++ to
     putStrLn $ "Subject: " ++ subject
     putStrLn ""
-    (flip forM_ putStrLn) $ lines body
+    putStrLn body
