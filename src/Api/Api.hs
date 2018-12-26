@@ -6,12 +6,13 @@ module Api.Api
 
 import           Api.UsersApi
 import           Api.StaticApi
+import           Api.UsersStreamingApi
 import           Servant
 
-type Api = UsersApi :<|> StaticApi
+type Api = UsersApi :<|> StaticApi :<|> UsersStreamingApi
 
 api :: Server Api
-api = usersApi :<|> staticApi
+api = usersApi :<|> staticApi :<|> streamingApi
 
 apiProxy :: Proxy Api
 apiProxy = Proxy
