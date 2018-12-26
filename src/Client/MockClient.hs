@@ -12,7 +12,7 @@ import           Data.Aeson
 import           Data.Proxy
 import           Servant.API
 import           Servant.Client
-import           Client.ClientApi
+import           Client.MockApi
 import           Client.Base
 import           Control.Monad
 

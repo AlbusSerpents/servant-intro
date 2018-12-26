@@ -2,7 +2,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Client.ClientApi 
+module Client.MockApi 
     ( Position (..)
     , ClientInfo (..)
     , Email (..)

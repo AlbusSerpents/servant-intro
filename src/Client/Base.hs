@@ -5,7 +5,6 @@ module Client.Base
 import           Network.HTTP.Client (newManager, defaultManagerSettings)
 import           Servant.Client
 import           Servant.Types.SourceT (foreach)
-import           Client.ClientApi
 
 runQuery :: ClientM a -> IO (Either ServantError a)
 runQuery query = environment >>= (runClientM  query)

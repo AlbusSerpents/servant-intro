@@ -5,7 +5,7 @@
 module Client.MockServer ( clientApi ) where
 
 import           Servant
-import           Client.ClientApi
+import           Client.MockApi
 import           Control.Monad (liftM2)
 import           Data.List
 

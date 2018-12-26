@@ -8,7 +8,7 @@ import           Api.UsersApi
 import           Api.StaticApi
 import           Api.UsersStreamingApi
 import           Client.MockServer
-import           Client.ClientApi
+import           Client.MockApi
 import           Servant
 
 type Api = UsersApi :<|> StaticApi :<|> UsersStreamingApi :<|> ClientApi
