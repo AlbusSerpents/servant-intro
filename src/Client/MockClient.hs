@@ -8,15 +8,12 @@ module Client.MockClient
     , generateEmail
     ) where
 
-import           Data.Aeson
 import           Data.Proxy
 import           Servant.API
 import           Servant.Client
+import           Control.Monad
 import           Client.MockApi
 import           Client.Base
-import           Control.Monad
-
-import qualified Servant.Client.Streaming as S
 
 targetApi :: Proxy ClientApi
 targetApi = Proxy

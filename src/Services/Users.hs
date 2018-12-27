@@ -4,8 +4,8 @@ module Services.Users
     ( users
     , getUser
     , createUser
-    , User
-    , UserCreated
+    , User(..)
+    , UserCreated(..)
     ) where
 
 import           Data.Time.Calendar
