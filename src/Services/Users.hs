@@ -1,5 +1,3 @@
-{-# LANGUAGE DeriveGeneric #-}
-
 module Services.Users 
     ( users
     , getUser
@@ -8,19 +6,9 @@ module Services.Users
     , UserCreated(..)
     ) where
 
-import           Data.Time.Calendar
-import           Data.Maybe
-import           GHC.Generics
-
-data UserCreated = Created 
-    { id :: Int } deriving (Eq, Show, Generic)
-
-data User = User
-    { name :: String
-    , age :: Int
-    , email :: String
-    , registration_date :: Day
-    } deriving (Eq, Show, Generic)
+import           Data.Maybe (listToMaybe)
+import           Data.User
+import           Data.Time.Calendar (fromGregorian)
 
 users :: [User]
 users =

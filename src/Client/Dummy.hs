@@ -2,7 +2,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Client.MockClient
+module Client.Dummy
     ( makePosition
     , sayHi
     , generateEmail
@@ -12,10 +12,13 @@ import           Data.Proxy
 import           Servant.API
 import           Servant.Client
 import           Control.Monad
-import           Client.MockApi
+
 import           Client.Base
 
-targetApi :: Proxy ClientApi
+import           Api.Dummy
+import           Data.Dummy
+
+targetApi :: Proxy DummyApi
 targetApi = Proxy
 
 getPosition :: Int -> Int -> ClientM Position

@@ -1,23 +1,11 @@
 {-# LANGUAGE TypeOperators #-}
 
-module Api.Api 
-    ( app
-    ) where
+module Api.Api ( Api ) where
 
-import           Api.UsersApi
-import           Api.StaticApi
-import           Api.UsersStreamingApi
-import           Client.MockServer
-import           Client.MockApi
 import           Servant
 
-type Api = UsersApi :<|> StaticApi :<|> UsersStreamingApi :<|> ClientApi
+import           Api.Users
+import           Api.Static
+import           Api.Dummy
 
-api :: Server Api
-api = usersApi :<|> staticApi :<|> streamingApi :<|> clientApi
-
-apiProxy :: Proxy Api
-apiProxy = Proxy
-
-app :: Application
-app = serve apiProxy api
+type Api = UsersApi :<|> StaticApi  :<|> DummyApi

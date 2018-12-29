@@ -2,7 +2,7 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Client.UserClient where
+module Client.User where
 
 import           Data.Aeson
 import           Data.Proxy
@@ -16,19 +16,16 @@ import qualified Servant.Client.Streaming as S
 import           Servant.Types.SourceT (foreach)    
 
 import           Client.Base
-import           Api.UsersApi
-import           Api.UsersStreamingApi
+import           Api.Users
 import qualified Services.Users as U
 
-instance FromJSON U.UserCreated
-
 streamUsers :: S.ClientM (SourceIO U.User)
-streamUsers = S.client (Proxy :: Proxy UsersStreamingApi)
+streamUsers = S.client (Proxy :: Proxy StreamUsers)
 
 list :: ClientM [U.User]
 details :: String -> ClientM U.User
 create :: U.User -> ClientM U.UserCreated
-list :<|> details :<|> create = client (Proxy :: Proxy UsersApi)
+list :<|> details :<|> create  = client (Proxy :: Proxy (ListUsers :<|> GetUser :<|> CreateUser))
 
 usersPresent :: IO ()
 usersPresent = (runQuery list) >>= (either print (flip forM_ print))
