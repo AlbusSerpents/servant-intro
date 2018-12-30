@@ -41,6 +41,7 @@ dependencies:
 - servant-client
 - time
 - warp
+- cookie
 
 library:
   source-dirs: src
