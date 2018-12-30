@@ -2,7 +2,12 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TypeOperators #-}
 
-module Client.User where
+module Client.User 
+    ( usersPresent
+    , userDetails
+    , getUsersStream
+    , clientMakeUser
+    ) where
 
 import           Data.Aeson
 import           Data.Proxy

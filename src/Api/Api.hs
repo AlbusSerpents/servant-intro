@@ -7,5 +7,6 @@ import           Servant
 import           Api.Users
 import           Api.Static
 import           Api.Dummy
+import           Api.Authentication
 
-type Api = UsersApi :<|> StaticApi  :<|> DummyApi
+type Api = UsersApi :<|> StaticApi  :<|> DummyApi :<|> AuthApi

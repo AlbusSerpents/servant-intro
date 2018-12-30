@@ -16,7 +16,7 @@ environment = do
     manager <- newManager defaultManagerSettings
     return $ mkClientEnv manager baseUrl
     where
-        baseUrl = BaseUrl Http "localhost" 8081 ""
+        baseUrl = BaseUrl Http "localhost" 8080 ""
 
 queryStream :: S.ClientM a -> (Either ServantError a -> IO b) -> IO b
 queryStream req handler = environment >>= (\e -> S.withClientM req e handler)
