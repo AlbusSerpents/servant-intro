@@ -19,3 +19,4 @@ instance ToJSON PublicData
 newtype User = User { userName :: Text }
     deriving (Eq, Show)
 
+newtype Account = Account { unAccount :: Text }

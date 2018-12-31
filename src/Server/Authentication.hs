@@ -23,7 +23,10 @@ publicHandler :: Handler [PublicData]
 publicHandler = return $ map PublicData ["foo", "bar", "baz"]
 
 privateHandler :: User -> Handler PrivateData
-privateHandler = return . PrivateData . T.append "Shhhhh " . userName
+privateHandler  = return . PrivateData . T.append "Shhhhh " . userName
+
+generalHandler :: Account -> Handler PrivateData
+generalHandler = return . PrivateData . flip T.append ", you are protected " . unAccount
 
 basicAuthServer :: Server AuthApi
-basicAuthServer = publicHandler :<|> privateHandler
+basicAuthServer = publicHandler :<|> privateHandler :<|> generalHandler
