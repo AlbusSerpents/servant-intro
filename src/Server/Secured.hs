@@ -9,7 +9,7 @@
 {-# LANGUAGE TypeOperators         #-}
 {-# LANGUAGE UndecidableInstances  #-}
 
-module Server.Authentication 
+module Server.Secured 
     ( basicAuthServer
     ) where
 
@@ -17,7 +17,7 @@ import qualified Data.Text as T
 import           Servant
 
 import           Data.Authentication
-import           Api.Authentication
+import           Api.Secured
 
 publicHandler :: Handler [PublicData]
 publicHandler = return $ map PublicData ["foo", "bar", "baz"]

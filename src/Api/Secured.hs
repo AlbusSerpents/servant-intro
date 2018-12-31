@@ -2,7 +2,7 @@
 {-# LANGUAGE TypeFamilies          #-}
 {-# LANGUAGE TypeOperators         #-}
 
-module Api.Authentication where
+module Api.Secured where
 
 import           Servant
 import           Data.Authentication
